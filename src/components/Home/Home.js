@@ -4,11 +4,12 @@ import { AllContext } from '../App/App';
 import "./Home.css"
 import Union from "../../img/Union.svg";
 import { Link, useNavigate} from 'react-router-dom';
+import { Button, Spinner } from 'react-bootstrap';
 
 const Home = () => {
 
 
-    const {blogs, getId} = useContext(AllContext);
+    const {blogs, getId, boolean} = useContext(AllContext);
 
     const navigate = useNavigate();
 
@@ -41,7 +42,27 @@ const Home = () => {
     return (
         <div className="home">
             <div className="pt-5">
-                {blog}
+                {  boolean ? 
+                    <div className="spinner">
+                        <div>
+                            <Button variant="primary" disabled>
+                                <Spinner
+                                as="span"
+                                animation="grow"
+                                size="sm"
+                                role="status"
+                                aria-hidden="true"
+                                />
+                                Loading...
+                             </Button>
+                        </div>
+                    </div>
+                    :
+
+                    <div>
+                        {blog}
+                    </div>
+                 }
             </div>
         </div>
     );

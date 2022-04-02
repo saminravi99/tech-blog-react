@@ -17,21 +17,33 @@ function App() {
 
   const [blogDetail, setBlogDetail] = React.useState({});
 
+  const [boolean, setBoolean] = React.useState(false);
+
   const [retriveBlog] = React.useState(localStorage.getItem('blogId'));
 
 
 
   useEffect(() => {
+    setBoolean(true);
     fetch(`https://retro-tech-talks.herokuapp.com/getBlog/${blogId}`)
       .then(response => response.json())
-      .then(json => setBlogDetail(json))
+      .then(json => {
+        
+        setBlogDetail(json)
+        setBoolean(false);
+
+      })
   }
   , [blogId])
   
   useEffect(() => {
+    setBoolean(true);
     fetch(`https://retro-tech-talks.herokuapp.com/getBlog/${retriveBlog}`)
       .then(response => response.json())
-      .then(json => setBlogDetail(json))
+      .then(json =>{
+        setBlogDetail(json)
+        setBoolean(false);
+      })
   }
   , [retriveBlog])
 
@@ -45,7 +57,7 @@ function App() {
 
 
   return (
-  <AllContext.Provider value={{blogs, getId, blogDetail}}>
+  <AllContext.Provider value={{blogs, getId, blogDetail, boolean}}>
     <Header></Header>
     <Routes>
       <Route path="/" element={<Home></Home>}></Route>
