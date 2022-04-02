@@ -27,9 +27,20 @@
 .blog-card-content > h4{
     font-weight : 600;
 }
+
+.go-to-blog-detail-link{
+    text-decoration: none;
+}
+
+
 .blog-card-content span{
     color: #1E90C2;
     font-weight: 400;
+    transition: color 0.3s ease-in-out, font-size 0.3s ease-in-out;
+}
+.blog-card-content span:hover{
+    color: #1B4388;
+    font-weight : 600;
 }
 
 .read-more{

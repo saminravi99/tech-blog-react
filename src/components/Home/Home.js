@@ -12,7 +12,6 @@ const Home = () => {
 
     const navigate = useNavigate();
 
-    console.log(blogs);
 
     const blog = blogs.map((blog) => {
         return (
@@ -27,7 +26,7 @@ const Home = () => {
                             <span className="ms-1">Posted By {blog.admin}</span>
                         </h5>
                         <p>{blog.blog.slice(0, 400)} .......</p>
-                        <Link to={`/blogs/${blog._id}`}>
+                        <Link className="go-to-blog-detail-link" to={`/blogs/${blog._id}`}>
                             <span onClick={() =>{
                             getId(blog._id);
                             navigate(`/blog/${blog._id}`)

@@ -7,23 +7,11 @@ import { AllContext } from '../App/App';
 
 const BlogDetail = () => {
 
-    // const {id} = useParams();
 
     const navigate = useNavigate();
 
     const {blogDetail} = useContext(AllContext);
 
-    
-
-    // const [blog, setBlog] = React.useState({});
-    // console.log(blog);
-
-    // React.useEffect(() => {
-    //     fetch(`https://retro-tech-talks.herokuapp.com/getBlog/${id}`)
-    //         .then(response => response.json())
-    //         .then(json => setBlog(json))
-    //         .catch(error => console.log(error));
-    // }, [id])
     return (
         <div>
             <div className="img-container">

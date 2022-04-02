@@ -14,16 +14,12 @@ export const AllContext = createContext();
 function App() {
 
   const [blogId, setBlogId] = React.useState('');
-  console.log(blogId);
 
   const [blogDetail, setBlogDetail] = React.useState({});
 
-  const [retriveBlog , setRetriveBlog] = React.useState(localStorage.getItem('blogId'));
-  console.log(retriveBlog);
-  console.log(setRetriveBlog);
+  const [retriveBlog] = React.useState(localStorage.getItem('blogId'));
 
 
-  console.log(blogDetail);
 
   useEffect(() => {
     fetch(`https://retro-tech-talks.herokuapp.com/getBlog/${blogId}`)
@@ -31,9 +27,7 @@ function App() {
       .then(json => setBlogDetail(json))
   }
   , [blogId])
-
   
-
   useEffect(() => {
     fetch(`https://retro-tech-talks.herokuapp.com/getBlog/${retriveBlog}`)
       .then(response => response.json())
@@ -49,7 +43,6 @@ function App() {
     localStorage.setItem('blogId', id);
   }
 
-  // console.log(blogs);
 
   return (
   <AllContext.Provider value={{blogs, getId, blogDetail}}>
