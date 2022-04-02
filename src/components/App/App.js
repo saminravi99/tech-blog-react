@@ -21,34 +21,41 @@ function App() {
 
   const [retriveBlog] = React.useState(localStorage.getItem('blogId'));
 
+  const blogs = useBlogs();
 
 
   useEffect(() => {
-    setBoolean(true);
-    fetch(`https://retro-tech-talks.herokuapp.com/getBlog/${blogId}`)
+   if(blogId){
+
+      setBoolean(true);
+
+      fetch(`https://retro-tech-talks.herokuapp.com/getBlog/${blogId}`)
       .then(response => response.json())
       .then(json => {
-        
-        setBlogDetail(json)
         setBoolean(false);
+        setBlogDetail(json)
 
       })
+   }
   }
   , [blogId])
   
   useEffect(() => {
-    setBoolean(true);
-    fetch(`https://retro-tech-talks.herokuapp.com/getBlog/${retriveBlog}`)
+    if( retriveBlog ){
+      
+      setBoolean(true);
+
+      fetch(`https://retro-tech-talks.herokuapp.com/getBlog/${retriveBlog}`)
       .then(response => response.json())
       .then(json =>{
-        setBlogDetail(json)
         setBoolean(false);
+        setBlogDetail(json)
       })
+    }
   }
   , [retriveBlog])
 
 
-  const blogs = useBlogs();
 
   const getId = (id) => {
     setBlogId(id);
