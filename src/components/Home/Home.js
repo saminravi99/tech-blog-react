@@ -1,18 +1,20 @@
 import React, { useContext } from 'react';
-import {  useNavigate } from 'react-router-dom';
+// import {  useNavigate } from 'react-router-dom';
 import { AllContext } from '../App/App';
 import "./Home.css"
 import Union from "../../img/Union.svg";
+import { Link, useNavigate} from 'react-router-dom';
 
 const Home = () => {
 
-    const {blogs} = useContext(AllContext);
+
+    const {blogs, getId} = useContext(AllContext);
 
     const navigate = useNavigate();
 
     console.log(blogs);
 
-    const blog = blogs.map((blog, index) => {
+    const blog = blogs.map((blog) => {
         return (
                 <div className="container d-flex flex-column flex-lg-row  align-items-center p-4 blog-card " key={blog._id}>
                     <div className="blog-card-img p-2">
@@ -25,7 +27,12 @@ const Home = () => {
                             <span className="ms-1">Posted By {blog.admin}</span>
                         </h5>
                         <p>{blog.blog.slice(0, 400)} .......</p>
-                        <span onClick={() => navigate(`/blogs/${blog._id}`)} className="read-more" to={`/blogs/${blog._id}`}>Read More</span>
+                        <Link to={`/blogs/${blog._id}`}>
+                            <span onClick={() =>{
+                            getId(blog._id);
+                            navigate(`/blog/${blog._id}`)
+                        }} className="read-more" to={`/blogs/${blog._id}`}>Read More</span>
+                        </Link>
                     </div>
                 </div>
             )
