@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap');
+
+
+
+.video-container{
+    height: 100vh
+}
+
+.video-container > h3{
+    font-family: Raleway;
+    color: #1B4388;
+    font-weight: 700;
+}
+.video-container > p{
+    font-family: Raleway;
+    color: #1E90C2;
+    font-weight: 600;
+}
+
+@media screen and (max-width: 768px){
+    .video-container > div > iframe{
+        padding: 10px;
+    }
+}
+    
